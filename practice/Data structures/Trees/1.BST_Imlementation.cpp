@@ -95,7 +95,7 @@ void Postorder(struct node *t)
 int main()
 {
 	int n;
-	cout<<"Enter no of elsements to be inserted:\n";
+	cout<<"Enter no of elements to be inserted:\n";
 	cin>>n;
 	while(n--)
 	{
