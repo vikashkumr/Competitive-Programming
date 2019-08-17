@@ -2,7 +2,7 @@
 using namespace std;
 void merge(int A[],int p,int q,int r)
 {
-	int i,j,n1,n2,count;
+	int i,j,n1,n2;
 	n1=q-p+1;
 	n2=r-q;
 	int L[n1+1],R[n2+1];
@@ -24,10 +24,8 @@ void merge(int A[],int p,int q,int r)
 	    {
 	    	A[k]=R[j];
 	    	j=j+1;
-	    	count=count+q-i;
 		}
 	}
-	cout<<count<<" ";
 }
 void merge_sort(int A[],int p,int r)
 {
