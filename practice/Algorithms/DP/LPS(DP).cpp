@@ -1,7 +1,7 @@
 //Longest Pallindromic Subsequence
 //Time Complexity => O(n^2) n=length of string
 //Bottom up solution
-//complete Search will tak O(2^n) time as it will generate all subsequence and check for pallindrome
+//complete Search will take O(2^n) time as it will generate all subsequence and check for pallindrome
 
 #include<bits/stdc++.h>
 using namespace std;
