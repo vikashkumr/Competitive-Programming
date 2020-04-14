@@ -4,6 +4,7 @@ using namespace std;
 #define pb push_back
 #define digit(x) floor(log10(x))+1
 #define mod 1000000007
+#define endl "\n"
 typedef long long ll;
 typedef long double ld;
 typedef vector<vector<ll> > matrix;
