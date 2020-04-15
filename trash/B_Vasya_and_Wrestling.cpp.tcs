@@ -1,0 +1,1 @@
+[{"input":"8\n1\n-2\n-3\n4\n5\n-6\n-7\n8","output":"second"},{"input":"3\n-1\n-2\n3","output":"first"},{"input":"2\n4\n-4","output":"second"}]
