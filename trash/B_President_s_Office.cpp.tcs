@@ -1,1 +1,0 @@
-[{"input":"3 4 R\nG.B.\n.RR.\nTTT.\n","output":"2\n"},{"input":"3 3 Z\n...\n.H.\n..Z\n","output":"0\n"}]
