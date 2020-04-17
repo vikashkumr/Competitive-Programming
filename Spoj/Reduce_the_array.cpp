@@ -11,48 +11,40 @@ typedef vector<vector<ll> > matrix;
 typedef vector<ll> arr;
 typedef vector<string> vs;
 typedef vector<pair<ll,ll> > pv;
-#define FOR(i,a,b) for(int i=a;i<=b;--i)
+#define test() int t;cin>>t;while(t--)
+#define FOR(i,a,b) for(int i=a;i<=b;++i)
 #define ROF(i,a,b) for(int i=a;i>=b;--i)
 #define all(x) x.begin(),x.end()
 #define debug(x) cerr << #x << " is " << x << endl;
 int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
 
-
 //=================================================================//
-
-vector<int>occur; 
-vector<pair<int,int>>v;
-map<int,int>hsh;
-map<int,int>mp;
 
 int main(){
     fast;
-    ll n,m;
-    cin>>n>>m;
-    
-    arr v;
-    map<int,int> fre,ind;
-    int t;
-    for(int i=0;i<n;i++) {
-        cin>>t;
-        if(fre[t]==0) {
-            ind[t] = i;
-            fre[t]++;
-        } else {
-            fre[t]++;
+    test() {
+        multiset<ll>pq;
+        ll n;
+        cin>>n;
+        while(n--) {
+            ll temp;
+            cin>>temp;
+            pq.insert(temp);
         }
-        v.pb(t);
+
+        ll ans = 0;
+        while(pq.size()>=2) {
+            multiset<ll>::iterator it;
+            it = pq.begin();
+            ll fir = *it; pq.erase(it); it++;
+            ll sec = *it; pq.erase(it); 
+            ans += (fir + sec);
+            if(pq.empty()) break;
+            pq.insert(fir+sec);
+        }
+        cout<<ans<<endl;
     }
-
-    //lambda function
-    sort(all(v),[&](ll a, ll b) -> bool {
-        if(fre[a]>fre[b]) return true;
-        else if(fre[b]>fre[a]) return false;
-        else if(ind[a]<ind[b]) return true;
-        else return false;
-    });
-    for(int it : v) cout<<it<<" ";
-
+    
     return 0;
 }

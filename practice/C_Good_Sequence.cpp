@@ -18,41 +18,28 @@ typedef vector<pair<ll,ll> > pv;
 int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
 
-
 //=================================================================//
-
-vector<int>occur; 
-vector<pair<int,int>>v;
-map<int,int>hsh;
-map<int,int>mp;
 
 int main(){
     fast;
-    ll n,m;
-    cin>>n>>m;
-    
-    arr v;
-    map<int,int> fre,ind;
-    int t;
+    ll n;
+    cin>>n;
+    unordered_map<ll,ll>mp;
     for(int i=0;i<n;i++) {
+        int t;
         cin>>t;
-        if(fre[t]==0) {
-            ind[t] = i;
-            fre[t]++;
-        } else {
-            fre[t]++;
-        }
-        v.pb(t);
+        mp[t]++;
     }
-
-    //lambda function
-    sort(all(v),[&](ll a, ll b) -> bool {
-        if(fre[a]>fre[b]) return true;
-        else if(fre[b]>fre[a]) return false;
-        else if(ind[a]<ind[b]) return true;
-        else return false;
-    });
-    for(int it : v) cout<<it<<" ";
-
+    ll ans = 0;
+    for(auto it:mp) {
+        if(it.first!=it.second) {
+            if(it.second>it.first) {
+                ans += it.second-it.first;
+            } else {
+                ans += it.second;
+            }
+        }
+    }
+    cout<<ans;
     return 0;
 }

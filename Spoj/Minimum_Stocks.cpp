@@ -21,9 +21,37 @@ int by[]={1,-1,0,0,1,-1,1,-1};
 
 //=================================================================//
 
+
+struct lex_compare {
+    bool cmp(pair<string,ll> a, pair<string,ll> b) {
+    return a.second<b.second;
+    }
+};
+
 int main(){
     fast;
-    
-    
+    int n;
+    cin>>n;
+    set<pair<string,ll>, lex_compare>st;
+    map<string,ll>mp;
+    FOR(i,1,n) {
+        ll tmp,v;
+        string s;
+        cin>>tmp;
+        cin>>s;
+        cin>>v;
+        if(tmp==1) {
+            st.insert({s,v});
+            mp[s] = v;
+        } else if(tmp==2) {
+            auto it  = st.find({s,mp[s]});
+            st.erase(it);
+            st.insert({s,v});
+            mp[s] = v;
+        } else {
+            cout<<st.begin()->first<<" "<<i<<endl;
+            st.erase(st.begin());
+        }
+    }
     return 0;
 }
