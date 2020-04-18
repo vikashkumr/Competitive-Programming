@@ -1,5 +1,5 @@
 //tower of hanoi
-//©vikash
+//ï¿½vikash
 #include<iostream>
 using namespace std;
 void tower(int n,char from,char to ,char via,int top){
