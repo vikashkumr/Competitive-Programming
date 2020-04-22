@@ -5,7 +5,7 @@ using namespace std;
 #define digit(x) floor(log10(x))+1
 #define mod 1000000007
 #define endl "\n"
-#define int long long
+typedef long long ll;
 typedef long double ld;
 typedef vector<vector<ll> > matrix;
 typedef vector<ll> arr;
@@ -20,11 +20,27 @@ int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
 
 //=================================================================//
-#undef int
+bool check(string s, int idx) {
+    if(idx==s.length()) {
+       return true;
+    }
+    if(s[idx]=='a') {
+        check(s,idx+1);
+    } else if(idx <= s.length()-2 and s[idx]=='b' and s[idx+1]=='b'){
+        check(s,idx+2);
+    } else 
+        return false;
+}
+
+
 int main(){
-#define int long long 
     fast;
-    
+    string s;
+    cin>>s;
+    if(check(s,0))
+        cout<<"true";
+    else 
+        cout<<"false";
     
     return 0;
 }

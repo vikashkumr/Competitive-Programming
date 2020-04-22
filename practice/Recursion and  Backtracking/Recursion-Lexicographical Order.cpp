@@ -7,10 +7,10 @@ using namespace std;
 #define endl "\n"
 #define int long long
 typedef long double ld;
-typedef vector<vector<ll> > matrix;
-typedef vector<ll> arr;
+typedef vector<vector<int> > matrix;
+typedef vector<int> arr;
 typedef vector<string> vs;
-typedef vector<pair<ll,ll> > pv;
+typedef vector<pair<int,int> > pv;
 #define test() int t;cin>>t;while(t--)
 #define FOR(i,a,b) for(int i=a;i<=b;++i)
 #define ROF(i,a,b) for(int i=a;i>=b;--i)
@@ -20,11 +20,27 @@ int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
 
 //=================================================================//
+
+void printNum(int i, int n) {
+    if(i<=n) cout<<i<<" ";
+    for(int idx=0;idx<=9;idx++) {
+        int temp = i*10+idx;
+        if(temp<=n){
+            printNum(temp,n);
+        } else break;
+    }
+}
+
+
 #undef int
 int main(){
 #define int long long 
     fast;
-    
-    
+    int n;
+    cin>>n;
+    cout<<0<<" ";
+    for(int i=1;i<=9;i++) {
+        printNum(i,n);
+    }
     return 0;
 }
