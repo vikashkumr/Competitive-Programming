@@ -5,7 +5,9 @@
         "random": "cpp",
         "deque": "cpp",
         "string": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     },
     "code-runner.executorMap": {
         "cpp": "cd $dir && g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
