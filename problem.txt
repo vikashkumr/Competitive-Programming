@@ -1,9 +1,0 @@
-Day 1: App Overview
-Day 2: Creating Node js API for Authentication (JWT)
-Day 3: Node js API for posts
-Day 4: Implementing Authentication, Posts, Profile pag…
-Day 5: Like and Unlike Post
-Day 6: Comments on post
-Day 7: Implementing profile page for other users
-Day 8: Adding follow & unfollow user feature
-Day 9: Adding profile pic & Deploy

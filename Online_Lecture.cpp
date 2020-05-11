@@ -18,32 +18,34 @@ typedef vector<pair<int,int> > pv;
 #define debug(x) cerr << #x << " is " << x << endl;
 int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
-
 //=================================================================//
-int f[50];
- int x, k;
-void solve(int x1, int z, int k1) {
-    if(z<1) return;
-    if(1 * (k-k1) *f[z]<x) return;
-    if(x1==0)
+int n,sum;
+int dp[200][200];
+int solve(int pos,int s, int *arr) {
+    if(pos==n and s==sum) return 1;
+    if(s==sum) return 1;
+    if(pos==n) return 0;
+    if(s>sum) return 0;
+
+    int &ans = dp[pos][s];
+    if(ans != -1) return ans;
+
+    int op1 = solve(pos+1,s+arr[pos],arr);
+    int op2 = solve(pos+1,s,arr);
+    return ans = op1+op2;
 }
+
 
 #undef int
 int main(){
 #define int long long 
     fast;
-    int q;
-    cin>>q;
-    while(q--) {
-       
-        cin>>x>>k;
-        int ans = 0;
-        f[1] = 1;
-        f[2] = 2;
-        for(int i=3;i<=43;i++) f[i] = f[i-1] + f[i-2];
-        solve(x,43,0);
-        cout<<ans<<endl;
-
+    test() {
+        cin>>n>>sum;
+        memset(dp, -1, sizeof dp);
+        int arr[n];
+        FOR(i,0,n-1) cin>>arr[i];
+        cout<<solve(0,0,arr)<<endl;
     }
     
     return 0;
