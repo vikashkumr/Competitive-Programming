@@ -22,23 +22,25 @@ int by[]={1,-1,0,0,1,-1,1,-1};
 int energy[100001];
 int n;
 int dp[100001];
-int solve(int pos, string *arr) {
+int solve(int pos,string arr[]) {
     if(pos == n) return 0;
-
+    string *t = arr;
     int &ans = dp[pos];
     if(ans!=-1) return ans;
     
     int op1 = INT_MAX;
     int op2 = INT_MAX;
-    if(pos>0 and (arr[pos]==arr[pos-1] || arr[pos]>arr[pos-1])) {
-        op1 = solve(pos+1,arr);
+    if(pos>0 and t[pos]>=t[pos-1]) {
+        op1 = solve(pos+1,t);
     }
-    string temp = arr[pos];
+    string temp = t[pos];
     reverse(temp.begin(),temp.end());
-    if(pos>0 and temp>arr[pos-1])
-        op2 = energy[pos] + solve(pos+1,arr);
+    if(pos>0 and temp>=t[pos-1]) {
+        reverse(t[pos].begin(),t[pos].end());
+        op2 = energy[pos] + solve(pos+1,t);
+    }
 
-    return ans = min(op1,op2);
+    return ans =  min(op1,op2);
 }
 
 
@@ -54,7 +56,7 @@ int main(){
     int ans1 = solve(1, str);
     reverse(str[0].begin(),str[0].end());
     memset(dp, -1, sizeof dp);
-    int ans2 = solve(1, str);
+    int ans2 = solve(1, str) + energy[0];
     if(min(ans1,ans2)==INT_MAX) cout<<-1;
     else cout<<min(ans1, ans2);
     return 0;
