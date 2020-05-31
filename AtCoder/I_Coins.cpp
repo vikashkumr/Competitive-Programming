@@ -19,13 +19,34 @@ typedef vector<pair<int,int> > pv;
 int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
 //=================================================================//
+int n;
+double dp[3000][3000];
+double solve(int pos, int heads, double *p) {
+    //base case
+    if(pos == n) return (heads >= (n+1)/2);
+    if(heads >= (n+1)/2) return 1;
 
+    double &ans = dp[pos][heads];
+    if(ans != -1) return ans;
+
+    //recursive case
+    //choose head
+    double op1 = p[pos]*solve(pos+1,heads+1,p);
+    //choose tail
+    double op2 = (1-p[pos])*solve(pos+1,heads,p);
+    return ans = op1 + op2;
+}
 
 #undef int
 int main(){
 #define int long long 
     fast;
-    
-    
+    cin>>n;
+    double p[n];
+    FOR(i,0,n-1) cin>>p[i];
+    FOR(i,0,2999)
+        FOR(j,0,2999)
+            dp[i][j] = -1.0;
+    cout<<fixed<<setprecision(10)<<solve(0,0,p);
     return 0;
 }

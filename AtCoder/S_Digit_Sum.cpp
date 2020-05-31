@@ -19,32 +19,23 @@ typedef vector<pair<int,int> > pv;
 int bx[]={0,0,1,-1,1,-1,-1,1};
 int by[]={1,-1,0,0,1,-1,1,-1};
 //=================================================================//
-int dp[10][81*18][2];
-int a,b;
+int dp[10001][101][2];
 string s;
-
-bool isDivisible(int n) {
-    string s = to_string(n);
-    int ans = 0;
-    for(int i=0;i<s.length();i++) {
-        if(n%(s[i]-'0')==0) ans++;
-    }
-    return ans==s.length();
-}
-
+int D;
 int solve(int pos,int sum, int tight) {
-    if(pos==s.length()) return isDivisible(sum);
+    if(pos==s.length()) {
+        return (sum%D)==0;
+    }
 
     int &ans = dp[pos][sum][tight];
     if(ans != -1) return ans;
 
     int res = 0;
     int end = (tight) ? (s[pos]-'0') : 9;
-    for(int i=1; i<=end; i++) {
-        res += solve(pos+1,sum+i*i, tight&(i==end));
+    for(int i=0; i<=end; i++) {
+        (res += (solve(pos+1,(sum+i)%D, tight&(i==end))%mod)%mod);
     }
-
-    return ans = res;
+    return ans = res%mod;
 }
 
 
@@ -52,17 +43,9 @@ int solve(int pos,int sum, int tight) {
 int main(){
 #define int long long 
     fast;
-    cin>>a>>b;
-    while(a!=-1 and b!=-1) {
-        memset(dp, -1, sizeof dp);
-        s = to_string(b);
-        int ansr = solve(0,0,1);
-        memset(dp, -1, sizeof dp);
-        a -= 1;
-        s = to_string(a);
-        int ansl = solve(0,0,1);
-        cout<<ansr-ansl<<endl;
-        cin>>a>>b;
-    }
+    cin>>s>>D;
+    memset(dp, -1, sizeof dp);
+    int ans = solve(0,0,1);
+    cout<<(ans-1+mod)%mod<<endl;
     return 0;
 }
