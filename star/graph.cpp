@@ -98,7 +98,7 @@ https://leetcode.com/problems/time-needed-to-inform-all-employees/
  	void dfs(unordered_map<int, vector<int>>&hm, int i, vector<int>& informTime, int &res, int curr) {
 
  		curr += informTime[i];
- 		res = max(res, curr);
+ 		res = max(res, curr);	
 
  		for (auto it = hm[i].begin(); it != hm[i].end(); it++)
  			dfs(hm, *it, informTime, res, curr);

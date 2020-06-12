@@ -24,8 +24,8 @@ int main() {
    addEdge(adj,3,4,2);
    addEdge(adj,0,4,1);
    addEdge(adj,3,1,9);
-   bool visited[V]; // visited array to not compute same vertex again
-   memset(visited,false,sizeof(visited));
+   // bool visited[V]; // visited array to not compute same vertex again
+   // memset(visited,false,sizeof(visited));
    int distance[V];  //record of path length from sourse to i'th vertex
 
    //innitialise
@@ -35,18 +35,19 @@ int main() {
    }
 
    //cotains unvisited node pair(-d,x) ==>d = distance till now x = vertex (-ve bcz to treat as min heap)
-   priority_queue<pair<int,int> > leftItem; //becs of this binary heap time complexity reduce
+   priority_queue<pair<int,int> > leftItem; //becs of this binary heap time complexity reduce //<dist, Node>
    leftItem.push(make_pair(0,0));
    while(!leftItem.empty()){
       int explore = leftItem.top().second;
       leftItem.pop();
-      if(visited[explore]) continue;
-      visited[explore] = true;
+      // if(visited[explore]) continue;
+      // visited[explore] = true;
       for(auto element : adj[explore]){
          int b = element.first, weight = element.second;
-         if(distance[explore]+weight < distance[b])
-         distance[b] = distance[explore]+weight;
-         leftItem.push(make_pair(-distance[b],b)); 
+         if(distance[explore]+weight < distance[b]) {
+            distance[b] = distance[explore]+weight;
+            leftItem.push(make_pair(-distance[b],b)); //if wanna use vis array take out this line from for loop
+         } 
       }
    }
 
