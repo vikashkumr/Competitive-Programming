@@ -8,7 +8,7 @@ class Node {
     char data;
     bool isTerminal;
     unordered_map<char,Node*> children;
-    Node(int data){
+    Node(char data){
         this->data = data;
         this->isTerminal = false;
     }

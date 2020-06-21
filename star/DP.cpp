@@ -2,16 +2,16 @@ As some folks requested to list down good Dyanamic Programming problems to start
 Beginner folks can wish to look at solutions listed below of particular pattern and can try to solve the other problem themselves.
 
 Longest Increasing Subsequence variants:
-https://leetcode.com/problems/longest-increasing-subsequence/
-https://leetcode.com/problems/largest-divisible-subset/
-https://leetcode.com/problems/russian-doll-envelopes/
-https://leetcode.com/problems/maximum-length-of-pair-chain/
-https://leetcode.com/problems/number-of-longest-increasing-subsequence/
-https://leetcode.com/problems/delete-and-earn/
-https://leetcode.com/problems/longest-string-chain/
+https://leetcode.com/problems/longest-increasing-subsequence/ ✅
+https://leetcode.com/problems/largest-divisible-subset/ ✅
+https://leetcode.com/problems/russian-doll-envelopes/ ✅
+https://leetcode.com/problems/maximum-length-of-pair-chain/ ✅
+https://leetcode.com/problems/number-of-longest-increasing-subsequence/ ✘
+https://leetcode.com/problems/delete-and-earn/ ✅
+https://leetcode.com/problems/longest-string-chain/ ✅ 
 
 Partition Subset:
-https://leetcode.com/problems/partition-equal-subset-sum/
+https://leetcode.com/problems/partition-equal-subset-sum/ ✅ 
 
 BitMasking:
 https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
