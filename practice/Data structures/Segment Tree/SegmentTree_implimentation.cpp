@@ -5,6 +5,85 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+int lazy[10000] = {0};
+//Lazy propagation
+
+//Lazy range update
+void updateRangeLazy(int *tree, int s, int e, int l, int r, int val, int index) {
+    //before going down resolve lazy value if it exists
+    if(lazy[index] != 0) {
+        tree[index] += lazy[index];
+        
+        //if non leaf node
+        lazy[2*index+1] += lazy[index]; 
+        lazy[2*index+2] += lazy[index];
+
+        //set lazy value at current index = 0 because it has been propagated to child node
+        lazy[index] = 0; 
+    } 
+
+    //Base case
+    //no overlap
+    if(s>r or l>e) {
+        return;
+    }
+
+    //complete overlap
+
+    if(s>=l and e<=r) {
+        tree[index] += val;
+
+        //pass lazy value to the children // not recursive mind return statement this is optimization
+        if(s!=e) {
+            lazy[2*index+1] += val;  
+            lazy[2*index+2] += val; 
+        }
+        return;
+    }
+
+    //recursive case - partial overlap
+
+    int mid = (s+e)/2;
+    updateRangeLazy(tree,s,mid,l,r,val,2*index+1);
+    updateRangeLazy(tree,mid+1,e,l,r,val,2*index+2);
+    tree[index] = min(tree[2*index+1], tree[2*index+2]);
+    return;
+}
+
+//Lazy Query
+
+int queryLazy(int *tree, int s, int e, int l, int r, int index) {
+    //before going down resolve lazy value if it exists
+    if(lazy[index] != 0) {
+        tree[index] += lazy[index];
+        
+        //if non leaf node
+        lazy[2*index+1] += lazy[index]; 
+        lazy[2*index+2] += lazy[index];
+
+        //set lazy value at current index = 0 because it has been propagated to child node
+        lazy[index] = 0; 
+    } 
+
+    //Query Logic
+    //No overlap
+    if(s > r or e < l) {
+        return INT_MAX;
+    }
+
+    //complete overlap
+    if(s>=l and e<=r) {
+        return tree[index];
+    }
+
+    //partial overlap
+
+    int mid = (s+e)/2;
+    int left = queryLazy(tree, s, mid, l, r, 2*index+1);
+    int right = queryLazy(tree, mid+1, e, l, r, 2*index+2);
+    return min(left, right);
+}
+
 
 //building segment tree
 void buildTree(int *tree, int *arr, int index, int s, int e){
@@ -79,7 +158,7 @@ void updateRange(int *tree,int index,int s,int e,int l,int r,int inc){
         return;
     }
 
-    mid = (s+e)/2;
+    int mid = (s+e)/2;
     updateRange(tree,2*index+1,s,mid,l,r,inc);
     updateRange(tree,2*index+2,mid+1,e,l,r,inc);
     tree[index] = min(tree[2*index+1],tree[2*index+2]);

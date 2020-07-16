@@ -22,7 +22,6 @@ public:
             nums1 = nums2;
             return;
         }
-        
         for (int i = m - 1; i >= 0; i--) {
             nums1[i + n] = nums1[i];
         }
@@ -34,7 +33,7 @@ public:
                 nums1[p1++] = nums2[p3++];
             }
         }
-        
+        //cout<<p3<<p1;
         while(p3 < n and p1 < m+n) {
             nums1[p1++] = nums2[p3++];
         }

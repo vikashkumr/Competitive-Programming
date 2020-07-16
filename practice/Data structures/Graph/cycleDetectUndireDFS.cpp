@@ -72,3 +72,15 @@ int main(){
     cout << g.isCyclic_bfs(1);
     return 0;
 }
+
+/*INPUT
+
+6
+1 2
+1 4
+2 3
+3 5
+5 6
+5 7
+
+*/
