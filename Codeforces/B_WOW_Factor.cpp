@@ -23,41 +23,30 @@ void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 
 int32_t main(){
     fast;
-    int n, k;
-    cin>>n>>k;
-    int sum = 0;
-    int arr[n];
-    for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
-    }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
-    } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
-            }
-        }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
+    string s;
+    cin>>s;
+    int n = s.length();
+    int pre[n]={0}, suffi[n]={0};
+    for(int i=1;i<n;i++) {
+        if(s[i-1]==s[i] and s[i] == 'v') {
+            pre[i]=pre[i-1]+1;
+        } else {
+            pre[i] = pre[i-1];
         }
     }
-    
+    for(int i=n-2;i>=0;i--) {
+        if(s[i]==s[i+1] and s[i] == 'v') {
+            suffi[i]=suffi[i+1]+1;
+        } else {
+            suffi[i] = suffi[i+1];
+        }
+    }
+    int ans = 0;
+    for(int i=1;i<n-1;i++) {
+        if(s[i]=='o') {
+            ans+=pre[i-1] * suffi[i+1];
+        }
+    }
+    cout<<ans;
     return 0;
 }

@@ -48,3 +48,30 @@ int main() {
     vector<int>v({10,20,30});
     cout<<minCostOfMul(v);
 }
+
+
+//recursive approach
+
+class Solution {
+public:
+    int dp[1001][1001];
+    int solve(int i, int j, vector<int> &p) {
+    	if(i>=j) return 0;
+        
+        int &ans = dp[i][j];
+        if(ans != -1) return ans;
+        
+        int mn = INT_MAX;
+        for(int k=i;k<j;k++) {
+        	int tmpAns = solve(i,k,p) + solve(k+1,j,p) + p[i-1]*p[k]*p[j];
+            mn = min(mn, tmpAns);
+        }
+        
+        return ans = mn;
+    }
+
+    int matrixChainMultiplication(vector<int>& p) {
+        memset(dp, -1, sizeof dp);
+   		return solve(1,p.size()-1,p);
+    }
+};

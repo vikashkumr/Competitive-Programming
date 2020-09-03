@@ -25,39 +25,20 @@ int32_t main(){
     fast;
     int n, k;
     cin>>n>>k;
-    int sum = 0;
-    int arr[n];
-    for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
+    int arr[k];
+    fill(arr,arr+k, 1);
+    int sum = k;
+    for(int i=0;i<k;i++) {
+        while(sum+arr[i]<=n) {
+            sum+=arr[i];
+            arr[i]*=2;
+        }
     }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
+    if(sum != n) {
+        cout<<"NO"<<endl;
     } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
-            }
-        }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
-        }
+        cout<<"YES"<<endl;
+        for(int i=0;i<k;i++) cout<<arr[i]<<" ";
     }
-    
     return 0;
 }

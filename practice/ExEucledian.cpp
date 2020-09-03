@@ -1,5 +1,12 @@
 //Extended Eucleadian algorithm ==> to solve for a and b in eq :: ax+by = gcd(a,b)
 
+/* When is this algorithm used?
+   This algorithm is used when A and B are co-prime. In such cases,
+   x becomes the multiplicative modulo inverse of A under modulo B, and y becomes the multiplicative
+   modulo inverse of B under modulo A. This has been explained in detail in the Modular multiplicative 
+   inverse section.
+*/
+
 //x = y'
 //y = x-(a/b)*y'
 //O(log(max(a,b)))

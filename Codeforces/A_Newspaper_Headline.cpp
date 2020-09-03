@@ -23,41 +23,27 @@ void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 
 int32_t main(){
     fast;
-    int n, k;
-    cin>>n>>k;
-    int sum = 0;
-    int arr[n];
-    for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
+    string s1, s2;
+    cin>>s1>>s2;
+    vi v[26];
+    for(int i=0;i<s1.length();i++) {
+        v[s1[i]-'a'].push_back(i);
     }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
-    } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
-            }
+    int ans = 1, pos = -1;
+    for(int i=0;i<s2.length();i++) {
+        int idx = s2[i]-'a';
+        if(v[idx].size()==0) {
+            cout<<-1<<endl;
+            exit(0);
         }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
+        int it = upper_bound(v[idx].begin(), v[idx].end(), pos)-v[idx].begin();
+        if(it!=v[idx].size()) {
+            pos = v[idx][it];
+        } else {
+            ans++;
+            pos = v[idx][0];
         }
     }
-    
+    cout<<ans<<endl;
     return 0;
 }

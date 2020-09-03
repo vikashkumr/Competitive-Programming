@@ -11,15 +11,12 @@ public:
         if(vis[i]) {
             return vis[i] == 1;
         }
-
         vis[i] = -1;
-
         for(auto x : graph[i]) {
             if(!dfs(x,graph,vis)) {
                 return false;
             }
         }
-
         vis[i] = 1;
         return true;
     }

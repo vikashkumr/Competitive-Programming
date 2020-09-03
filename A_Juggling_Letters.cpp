@@ -23,40 +23,36 @@ void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 
 int32_t main(){
     fast;
-    int n, k;
-    cin>>n>>k;
-    int sum = 0;
-    int arr[n];
-    for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
-    }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
-    } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
+    test() {
+        int len = 0;
+        int n;
+        cin>>n;
+        string s;
+        unordered_map<char,int> hm;
+        while(n--) {
+            cin>>s;
+            for(char ch: s) {
+                hm[ch]++;
+                len++;
             }
         }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
+        if((len%n)!=0) {
+            cout<<"NO"<<endl;
+        } else {
+            int times = len/n;
+            bool ok = 1;
+            for(auto it: hm) {
+                if(((it.second)%n)!=0) {
+                    cout<<"NO"<<endl;
+                    ok = 0;
+                    break;
+                }
+            }
+            if(ok) {
+                cout<<"YES"<<endl;
+            }
         }
+
     }
     
     return 0;

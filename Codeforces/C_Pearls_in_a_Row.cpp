@@ -23,41 +23,36 @@ void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 
 int32_t main(){
     fast;
-    int n, k;
-    cin>>n>>k;
-    int sum = 0;
+    int n;
+    cin>>n;
     int arr[n];
     for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
+        cin>>arr[i];       
     }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
-    } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
+    unordered_map<int,int> hm;
+    int cnt = 0;
+    vp vpair;
+    int last_idx = 0;
+    for(int i=0;i<n;i++) {
+        if(hm[arr[i]] != 0) {
+            vpair.push_back({last_idx+1, i+1});
+            hm.clear();
+            last_idx = i+1;
+        } else
+        hm[arr[i]]++;
+    }
+    if(vpair.size() == 0) cout<<-1;
+    else {
+        int i=0;
+        cout<<vpair.size()<<endl;
+        for(auto x : vpair) {
+            if(i==vpair.size()-1) {
+               cout<<x.first<< " "<<n; 
+               break;   
             }
-        }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
+            cout<<x.first<< " "<<x.second<<endl;
+            i++;
         }
     }
-    
     return 0;
 }

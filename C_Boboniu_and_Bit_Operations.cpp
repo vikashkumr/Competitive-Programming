@@ -23,41 +23,27 @@ void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 
 int32_t main(){
     fast;
-    int n, k;
-    cin>>n>>k;
-    int sum = 0;
-    int arr[n];
+    int n,m;
+    cin>>n>>m;
+    int a[n];
     for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
+        cin>>a[i];       
     }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
-    } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
-            }
-        }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
-        }
+    int b[m];
+    for(int i=0;i<m;i++) {
+        cin>>b[i];       
     }
-    
+    for(int i=0;i<n;i++) {
+        int x = INT_MAX;
+        for(int j=0;j<m;j++) {
+            x = min(x, a[i]&b[j]);
+        }
+        a[i] = x;
+    }
+    int ans = 0;
+    for(int i=0;i<n;i++) {
+        ans |= a[i];       
+    }
+    cout<<ans;
     return 0;
 }

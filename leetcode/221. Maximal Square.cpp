@@ -8,33 +8,20 @@ public:
     }
     
     int maximalSquare(vector<vector<char>>& m) {
-        if(m.size()==0) return 0;
-        int n = 0;
-        
-        int row = m.size();
-        int col = m[0].size();
-        if(row==1 and col==1) return m[row-1][col-1]-'0';
-        int matrix[row+1][col+1];
-        
-        for(int i=0;i<row;i++) {
-            matrix[i][0] = m[i][0]-'0';
-            n = max(n, matrix[i][0]);
-        }
-        
-        for(int i=0;i<col;i++) {
-            matrix[0][i] = m[0][i]-'0';
-            n = max(n, matrix[0][i]);
-        }
-        
-        for(int i=1;i<row;i++) {
-            for(int j=1;j<col;j++) {
-               if(m[i][j]=='1') {
-                   matrix[i][j] = 1 + min(matrix[i-1][j-1], min(matrix[i-1][j],matrix[i][j-1]));
-                   n = max(n, matrix[i][j]);
-               }
-                else matrix[i][j] = 0;
+        int n = matrix.size();
+        int m = matrix[0].size();
+   		int dp[n][m]={0};
+        int ans = 0;
+        for(int i=0;i<m;i++) if(matrix[0][i] == '1') dp[0][i] = 1, ans = 1;
+		for(int i=0;i<n;i++) if(matrix[i][0] == '1') dp[i][0] = 1, ans = 1;
+        for(int i=1;i<n;i++) {
+        	for(int j=1;j<m;j++) {
+            	if(matrix[i][j] == '1')  {
+                	dp[i][j] = 1 + min(dp[i-1][j], min(dp[i-1][j-1],dp[i][j-1]));
+                	ans = max(ans,dp[i][j]);
+                }
             }
         }
-        return n*n;
+        return ans*ans;
     }
 };
