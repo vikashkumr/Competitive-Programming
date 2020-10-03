@@ -2,6 +2,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define MOD 1000000007
+#define ll long long
 ll k=2;
 
 vector<vector<ll> > multiply(vector<vector<ll> > A, vector<vector<ll> > B){

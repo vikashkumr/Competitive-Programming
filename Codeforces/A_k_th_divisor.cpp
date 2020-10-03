@@ -20,42 +20,37 @@ const int sz = 100005;
 void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 //=================================================================//
 
+int divisor(int n) {
+    int ans = 0;
+    for(int i=1;i*i<=n;i++) {
+        if(n%i==0) ans++;
+    }
+    if(((int)sqrtl(n) * (int)sqrtl(n)) == n) return (2*ans)-1;
+    return 2*ans;
+}
 
 int32_t main(){
     fast;
     int n, k;
     cin>>n>>k;
-    int sum = 0;
-    int arr[n];
-    for(int i=0;i<n;i++) {
-        cin>>arr[i];
-        sum+=arr[i];
+    int no = divisor(n);
+    if(k>no) {
+        cout<<-1;
+        exit(0);
     }
-    vector<int> v;
-    if((sum%k)!=0) {
-        cout<<"No"<<endl;
-    } else {
-        int tmp = 0;
-        int cnt = 0;
-        int avg = sum/k;
-        for(int i=0;i<n;i++) {
-            if(tmp+arr[i] < avg) {
-                tmp+=arr[i];
-                cnt++;
-            } else if(tmp + arr[i] == avg){
-                cnt++;
-                tmp+=arr[i];
-                v.push_back(cnt);
-                cnt = 0;
-                tmp = 0;
-            } else {
-                cout<<"No";
-                exit(0);
+    int div = 0;
+    for(int i=1;i*i<=n;i++) {
+        if(n%i==0){
+            div++;
+            if(div==k || no-div+1==k) {
+                if(div==k) {
+                    cout<<i;
+                    break;
+                } else {
+                    cout<<n/i;
+                    break;
+                }
             }
-        }
-        cout<<"Yes"<<endl;
-        for(int i=0;i<v.size();i++) {
-            cout<<v[i]<<" ";
         }
     }
     

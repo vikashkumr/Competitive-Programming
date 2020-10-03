@@ -35,12 +35,12 @@ void dfs(int curr) {
     order.push_back(curr);
 }
 
-void dfs_reverse(int curr, int col) {
-    comp[curr] = col;
+void dfs_reverse(int curr, int com_no) {
+    comp[curr] = com_no;
     vis[curr] = 1;
     for(auto child: revgr[curr]) {
         if(!vis[child]) {
-            dfs_reverse(child, col);
+            dfs_reverse(child, com_no);
         }
     }
 }
@@ -63,10 +63,10 @@ void solve() {
     }
 
     memset(vis, 0, sizeof vis);
-    int col = 0;
+    int com_no = 0;
     for (int i = n; i >= 1; i--) {
         if(!vis[order[i]]) {
-            dfs_reverse(order[i], col++);
+            dfs_reverse(order[i], com_no++);
         }
     }
 

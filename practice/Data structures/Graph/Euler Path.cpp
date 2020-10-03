@@ -46,7 +46,7 @@ void euler_tour_2(int curr, int par) {
         }
     }
     //after leaving curr vertex
-    tin[curr] = timer++;
+    tout[curr] = timer++;
     cout<<curr<<" ";
     return;
 }
