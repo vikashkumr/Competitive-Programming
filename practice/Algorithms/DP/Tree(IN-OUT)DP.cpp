@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define fo(i,n) for(i=0;i<n;i++)
+#define pb push_back
 #define Fo(i,k,n) for(i=k;k<n?i<n:i>n;k<n?i+=1:i-=1)
 const int mod = 1000000007;
 const int N = 3e5, M = N;

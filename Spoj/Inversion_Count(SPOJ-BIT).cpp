@@ -55,6 +55,5 @@ int32_t main(){
         }
         cout<<total_invcnt<<endl;
     }
-    
     return 0;
 }

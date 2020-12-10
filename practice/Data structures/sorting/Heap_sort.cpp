@@ -1,22 +1,20 @@
 //c++ programme to sort elements of array using heap data structure
 #include<bits/stdc++.h>
 using namespace std;
-void max_Heapyfy(int A[],int size,int i)
-{
+void max_Heapyfy(int A[],int size,int i) {
 	int l,r,largest;
 	l=2*i+1;
 	r=2*i+2;
-	if(A[l]>A[i] && l<=size)
+	if(l<=size && A[l]>A[i])
 	largest=l;
 	else
 	largest=i;
-	if(A[r]>A[largest] && r<=size)
+	if(r<=size && A[r]>A[largest])
 	largest=r;
-	if(largest!=i)
-	{
-	swap(A[largest],A[i]);
-	max_Heapyfy(A,size,largest);
-}
+	if(largest!=i) {
+		swap(A[largest],A[i]);
+		max_Heapyfy(A,size,largest);
+	}
 }
 
 //Heap sort
@@ -43,8 +41,8 @@ int main()
 	for(int i=0;i<n;i++)
 	cin>>A[i];
 	Heap_Sort(A,n);
-	cout<<"sorted elsements:"
-	for(int i=0;i<n;i++)
+	cout<<"sorted elsements:"<<endl;
+	for(int i=0;i<n;i++) 
 	cout<<A[i]<<" ";
 	return 0;
 }

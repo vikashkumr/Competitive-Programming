@@ -18,23 +18,23 @@ class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
         if(root==NULL) return {};
-        deque<TreeNode*>dq;
+        queue<TreeNode*>dq;
         vector<vector<int>>v;
         vector<int> temp;
         bool l = true;
-        dq.push_back(root);
+        dq.push(root);
         while(!dq.empty()) {
             temp.clear();
             int len = dq.size();
             while(len--) {
                 temp.push_back(dq.front()->val); 
                 if(dq.front()->left) {
-                    dq.push_back(dq.front()->left);
+                    dq.push(dq.front()->left);
                 }
                 if(dq.front()->right) {
-                    dq.push_back(dq.front()->right);
+                    dq.push(dq.front()->right);
                 }
-                dq.pop_front();
+                dq.pop();
             }
             if(l==1){
                 v.push_back(temp);

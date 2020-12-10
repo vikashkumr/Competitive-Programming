@@ -7,6 +7,7 @@ class Graph {
         instack[node] = vis[node] = true;
 
         for(auto child: adj[node]) {
+            //instack check is if that node is in current path of dfs (then there will be cycle)
             if((!vis[child] and isCyclic_dfs_helper(child, vis, instack)) or instack[child]) {
                 return true;
             }

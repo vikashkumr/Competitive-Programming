@@ -67,3 +67,31 @@ public:
  */
 // @lc code=end
 
+// 2nd Sol
+class MedianFinder {
+public:
+    /** initialize your data structure here. */
+    priority_queue<int> pqmax;
+	priority_queue<int, vector<int>, greater<int>> pqmin;
+    MedianFinder() {
+        
+    }
+    
+    void addNum(int tmp) {
+        pqmax.push(tmp);
+	    if(pqmax.size() - pqmin.size() > 1) {
+	        pqmin.push(pqmax.top());pqmax.pop();
+	    }
+        if(!pqmin.empty() && pqmax.top()  > pqmin.top()) {
+            int x = pqmin.top();pqmin.pop();
+            pqmin.push(pqmax.top());pqmax.pop();
+            pqmax.push(x);
+        }
+    }
+    
+    double findMedian() {
+        if((pqmin.size() + pqmax.size())&1) return pqmax.top();
+	    else return (double)(pqmax.top() + pqmin.top()) / 2;
+    }
+};
+

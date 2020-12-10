@@ -22,21 +22,21 @@
 
 class Solution {
 public:
-    int dimeter;
-    int diameter(TreeNode *root) {
-        if(root == NULL) return 0;
-        if(root->left==NULL and root->right==NULL) return 1;
-        int lh = diameter(root->left);
-        int rh = diameter(root->right);
-        dimeter = max(1 + lh + rh, dimeter);
-        return 1 + max(lh, rh);
+    int res;
+    
+    int findD(TreeNode *root) {
+        if(root==NULL) return 0;
+        int l = findD(root->left);
+        int r = findD(root->right);
+        int h = 1 + max(l,r);
+        res = max(res, 1+l+r);
+        return h;
     }
     
     int diameterOfBinaryTree(TreeNode* root) {
         if(root==NULL) return 0;
-        if(root->left==NULL and root->right==NULL) return 0;
-        diameter(root);
-        return dimeter-1;
+        findD(root);
+        return res-1;
     }
 };
 // @lc code=end

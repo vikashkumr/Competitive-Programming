@@ -19,14 +19,30 @@ int dy[] = {1, -1, 0, 0};
 const int sz = 100005;
 void showArr(int *arr, int n){for(int i=0;i<n;i++) cout<<arr[i]<<" ";}
 //=================================================================//
-class Xx {
-	public:
-		static int roi;
-};
-// int Xx::roi = 0;
+int n;
+int dp[1001][1001];
+int solve(int pos, int *arr, int last_pos) { 
+
+    int &ans = dp[pos][last_pos];
+    if(ans != -1) return ans;
+
+    int val = 0;
+    for(int i=pos;i<n;i++) {
+        if((arr[i]%arr[last_pos])==0)
+        val = max(val, arr[i] + solve(i+1, arr, i));
+    }
+    return ans = val;
+}
+
 int32_t main(){
-	fast;
-	Xx x1;
-	cout<<x1.roi<<endl;
-	return 0;
+    fast;
+    n = 6;
+    int arr[n] = {1,2,3,4,9,8};
+    int ans = 0;
+    memset(dp, -1, sizeof dp);
+    for(int i=0;i<n;i++) {
+        ans = max(ans, arr[i] + solve(i+1, arr, i));
+    }
+    cout<<ans;
+    return 0;
 }

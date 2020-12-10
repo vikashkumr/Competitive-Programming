@@ -7,7 +7,7 @@ ll mod=1000000007;
       
         int i=s;int j=mid+1;
         while(i<=mid && j<=e){
-             if((ll)a[i]>(ll)a[j]){
+            if((ll)a[i]>(ll)a[j]){
                 count=((mid-i+1)%mod+count%mod)%mod;
                 j++;
             }
@@ -16,6 +16,7 @@ ll mod=1000000007;
         sort(a.begin()+s,a.begin()+e+1);
         return;
     }
+    
     void mergesort(vector<int>&a,int s,int e,ll &count){
       
         if(s==e)return ;

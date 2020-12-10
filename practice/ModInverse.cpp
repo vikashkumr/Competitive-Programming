@@ -16,11 +16,8 @@ you are required to find B such  that it satisfies the following equation: (A*B)
 
 Here B is the modular multiplicative inverse of A under modulo M.
 
-
-
-
-
-A and M are coprime i.e.Ax + My = 1 . In the extended Euclidean algorithm, x is the modular multiplicative inverse of A under modulo M. Therefore, the answer is x. You can use the extended Euclidean algorithm to find the multiplicative inverse.
+A and M are coprime i.e.Ax + My = 1 . In the extended Euclidean algorithm, x is the modular multiplicative inverse of A under modulo M. Therefore, the answer is x. 
+You can use the extended Euclidean algorithm to find the multiplicative inverse.
 
 For example, if A=5 and M=12, then gcd(A,M) = 1. Therefore, the inverse exists.
 

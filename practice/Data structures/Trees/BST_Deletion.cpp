@@ -62,7 +62,7 @@ void create()
 struct node *findMax(struct node *p)
 {
 	while(p->right)
-	p=p->right;
+		p=p->right;
 	return p;
 }
 
@@ -70,11 +70,11 @@ struct node *Delete(struct node *p,int x)
 {
 	struct node *temp,*temp1;
 	if(p==NULL)
-	cout<<"No such element is present in the tree:\n";
+		cout<<"No such element is present in the tree:\n";
 	else if(x<p->data)
-	p->left=Delete(p->left,x);
+		p->left=Delete(p->left,x);
 	else if(x>p->data)
-	p->right=Delete(p->right,x);
+		p->right=Delete(p->right,x);
 	else
 	{
 		if(p->left && p->right)
@@ -87,9 +87,9 @@ struct node *Delete(struct node *p,int x)
 		{
 			temp1=p;
 			if(!p->left)
-			p=p->right;
+				p=p->right;
 			if(!p->right)
-			p=p->left;
+				p=p->left;
 			delete(temp1);
 		}
 		cout<<"item deleted:\n";
@@ -120,16 +120,16 @@ int main()
 	cin>>choice;
 	switch(choice)
 	{
-		case 1:
-	cout<<"enter the element you want to delete:\n";
-	cin>>x;
-	Delete(root,x);
-	break;
-	case 2:
-	{
-	Inorder(root);
-	cout<<"\n";
-}
+			case 1:
+		cout<<"enter the element you want to delete:\n";
+		cin>>x;
+		Delete(root,x);
+		break;
+		case 2:
+		{
+		Inorder(root);
+		cout<<"\n";
+	}
 	break;
 	default:
 	cout<<"wrong input:\n";

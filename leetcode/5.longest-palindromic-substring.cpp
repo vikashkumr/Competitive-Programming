@@ -38,9 +38,8 @@ public:
                 else dp[i][j] = 0;
             }
         }
-
+        
         return s.substr(l,r-l+1);
     }
 };
 // @lc code=end
-
