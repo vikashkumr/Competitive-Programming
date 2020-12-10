@@ -1,2 +1,2 @@
-# Competitive-Programming
-Programming codes of contest and practice
+# Competitive Programming
+Codes of contest and practice.
