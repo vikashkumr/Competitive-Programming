@@ -44,7 +44,6 @@ void solve(ll i, ll j, ll n, ll m,string v) {
     solve(i+1,j+1,n,m,v+'D');
 }
 
-
 int main(){
     fast;
     ll n;
