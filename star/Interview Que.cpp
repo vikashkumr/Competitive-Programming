@@ -227,7 +227,6 @@ Day29:
 Revise CN notes, that you would have made during your sem. 
 If not made notes, spend 2 or 3  days and make notes from Knowledge Gate. 
 
-
 Day30: 
 Make a note of how will your represent your projects, and prepare all questions related to tech which you have used in your projects. Prepare a note which you can say for 3-10 minutes when he asks you that say something about the project. 
 
